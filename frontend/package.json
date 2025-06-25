@@ -1,0 +1,32 @@
+{
+  "name": "rochas",
+  "version": "0.0.1",
+  "description": " Uju Rochas-Anwukah is at the forefront of transformative project that shape public health and sustainable development. Her work spans critical areas such as nutrition, clean water access, sanitation, and hygiene. Through her leadership roles, including her position as the Special Assistant to the President in Public Health, she spearheads impactful national initiatives that promote healthier communities across Nigeria. As the Founder of U-Save Foundation, Uju channels her passion into grassroots empowerment, providing essential resources and support to underserved populations. Her activities reflect a deep commitment to improving quality of life and advancing health equity.",
+  "productName": "Uju Rochas",
+  "author": "emmanueltlom <nwabuodafiemmanuel@gmail.com>",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No test specified\" && exit 0",
+    "icons": "icongenie generate -i logo.png --skip-trim --theme-color",
+    "dev": "quasar dev",
+    "build": "quasar build"
+  },
+  "dependencies": {
+    "@quasar/extras": "^1.16.4",
+    "axios": "^1.8.3",
+    "pinia": "^2.0.11",
+    "quasar": "^2.6.0",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.0"
+  },
+  "devDependencies": {
+    "@quasar/app-vite": "^1.3.0",
+    "autoprefixer": "^10.4.2",
+    "postcss": "^8.4.14"
+  },
+  "engines": {
+    "node": "^18 || ^16 || ^14.19",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

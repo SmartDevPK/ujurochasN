@@ -1,0 +1,19 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <h1>Edit Item</h1>
+    <form action="/update-admin/<%= item._id %>" method="POST" enctype="multipart/form-data">
+        <input type="text" name="title" value="<%= item.title %>" required><br>
+        <textarea name="description" required><%= item.description %></textarea><br>
+        <input type="file" name="images" ><br>
+        <button type="submit">Update Item</button>
+        <a href="/view-admin/" class="edit-link">Return to DashBoard</a>
+
+    </form>
+</body>
+</html>

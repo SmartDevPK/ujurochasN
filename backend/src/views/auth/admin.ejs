@@ -1,0 +1,20 @@
+<link rel="stylesheet" href="/css/style.css">
+
+<form action="/admin" method="POST" enctype="multipart/form-data" onsubmit="return validateFiles()">
+    <input type="text" name="title" placeholder="Title" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="file" name="images" multiple accept="image/*" required>
+    <button type="submit">Submit</button>
+    <a href="/view-admin">Dashboard</a>
+</form>
+
+<script>
+  function validateFiles() {
+    const fileInput = document.querySelector('input[name="images"]');
+    if (fileInput.files.length > 4) {
+      alert("You can upload a maximum of 4 images.");
+      return false;
+    }
+    return true;
+  }
+</script>

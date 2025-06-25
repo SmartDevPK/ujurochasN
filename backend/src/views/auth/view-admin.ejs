@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        img {
+            max-width: 100px;
+            height: auto;
+        }
+        .button-container {
+            margin-bottom: 15px;
+        }
+        .button-container a {
+            display: inline-block;
+            padding: 8px 12px;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+        }
+        .edit-link {
+            background-color: #007bff;
+        }
+        .edit-link:hover {
+            background-color: #0056b3;
+        }
+        .delete-link {
+            background-color: #dc3545;
+        }
+        .delete-link:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Admin Dashboard</h1>
+
+    <!-- Navigation Buttons -->
+    <div class="button-container">
+        <a href="/admin" class="edit-link">Add New</a>
+        <a href="/logout" class="edit-link">Log Out</a>
+    </div>
+
+    <!-- Table to Display Items -->
+    <h2>Items</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Image</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% if (items && items.length > 0) { %>
+                <% items.forEach(item => { %>
+                    <tr>
+                        <td><%= item.title %></td>
+                        <td><%= item.description %></td>
+                        <td>
+                            <img src="/<%= item.image %>" alt="Uploaded Image">
+                        </td>
+                        <td>
+                            <!-- Edit Link -->
+                            <a href="/update-admin/<%= item._id %>" class="edit-link">Edit</a>
+
+                            <!-- Delete Item -->
+                            <form action="/items/<%= item._id %>?_method=DELETE" method="POST" style="display: inline;" onsubmit="return confirmDeleteItem()">
+                                <button type="submit" class="delete-link">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            <% } else { %>
+                <tr>
+                    <td colspan="4">No items available</td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+
+    <!-- YouTube Links Section -->
+    <h2>YouTube Links</h2>
+    <% if (youtubeItems && youtubeItems.length > 0) { %>
+        <table>
+            <thead>
+                <tr>
+                    <th>YouTube Link</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% youtubeItems.forEach(youtubeItem => { %>
+                    <tr>
+                        <td>
+                            <a href="<%= youtubeItem.youtubeLink %>" target="_blank"><%= youtubeItem.youtubeLink %></a>
+                        </td>
+                        <td>
+                            <!-- View YouTube Link -->
+                            <a href="/update-youtube/<%= youtubeItem._id %>" class="edit-link">Edit Youtube</a>
+
+                            <!-- Delete YouTube Link -->
+                            <form action="/youtube/<%= youtubeItem._id %>?_method=DELETE" method="POST" style="display: inline;" onsubmit="return confirmDeleteYouTube()">
+                                <button type="submit" class="delete-link">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p>No YouTube links available.</p>
+    <% } %>
+
+    <!-- Add YouTube Link -->
+    <div class="button-container">
+        <a href="/youtube" class="edit-link">Add YouTube Link</a>
+    </div>
+
+    <!-- JavaScript for Delete Confirmation -->
+    <script>
+        function confirmDeleteYouTube() {
+            return confirm("Are you sure you want to delete this YouTube link?");
+        }
+
+        function confirmDeleteItem() {
+            return confirm("Are you sure you want to delete this item?");
+        }
+    </script>
+
+</body>
+</html>
