@@ -19,7 +19,11 @@ app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
-app.use(cors({ origin: "http://localhost:9000" })); // Allow frontend to access the API
+app.use(cors({ 
+    origin: "http://localhost:9000",
+    origin: "http://deploy-mern-link.vercel.app",
+    credentials: true, 
+})); // Allow frontend to access the API
 
 // Set view engine
 app.set("view engine", "ejs");
