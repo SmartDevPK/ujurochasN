@@ -21,7 +21,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride("_method"));
 app.use(cors({ 
     origin: "http://localhost:9000",
-    origin: "http://deploy-mern-link.vercel.app",
+    origin: "http://deploy-mern-lwhq.vercel.app",
     credentials: true, 
 })); // Allow frontend to access the API
 
